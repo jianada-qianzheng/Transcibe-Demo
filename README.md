@@ -48,3 +48,13 @@ Use simple API,reason: easy to be consumed be other applications.
 
 \------------------------------------------------Whisper local is tested. Mile Stone-----------------------------------------
 
+Test:
+
+    After download, and isntalled python on your computer, open this project on VS code, and run command line below to run the api:
+
+    cd app
+
+    python -m uvicorn main:app
+
+ visit url: http://127.0.0.1:8000/docs#/default/upload_audio_file_upload_audo__post
+
