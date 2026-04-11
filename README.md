@@ -56,5 +56,5 @@ Test:
 
     python -m uvicorn main:app
 
- visit url: http://127.0.0.1:8000/docs#/default/upload_audio_file_upload_audo__post
+ visit url: http://127.0.0.1:8000/docs
 
