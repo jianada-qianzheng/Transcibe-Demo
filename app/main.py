@@ -34,7 +34,10 @@ async def transcribe_audio(audio_file: UploadFile) -> str:
             
             result =  model.transcribe(temp_audio.name)
 
-            return result
+            return {
+                "text": result["text"],
+                "segments": transfer_json(result["segments"])
+            }
             
             
             
@@ -45,4 +48,36 @@ async def transcribe_audio(audio_file: UploadFile) -> str:
         finally:
             await audio_file.close()
     
-    return "transcribed text"
+    return {"error": "Failed to process the audio file."}
+
+def transfer_json(segments: list) -> str:
+
+    try:
+        json_segments = []
+        for segment in segments:
+            json_segments.append({
+                "id": segment["id"],
+                "start": text_seconds_to_timestamp(segment["start"]),
+                "end": text_seconds_to_timestamp(segment["end"]),
+                "text": segment["text"]
+            })
+        return json_segments
+
+    except Exception as e:
+        print(f"Error converting transcription to JSON: {e}")
+        return {"error": "Failed to convert transcription to JSON."}   
+
+def text_seconds_to_timestamp(text_seconds: str) -> str:
+    
+    try:
+      
+        seconds = int(text_seconds)
+    except ValueError:
+        return "error：something wrong with the text_seconds."
+    
+   
+    hours = seconds // 3600
+    minutes = (seconds % 3600) // 60
+    secs = seconds % 60
+    
+    return f"{hours:02d}:{minutes:02d}:{secs:02d}" 
