@@ -36,5 +36,15 @@ Use simple API,reason: easy to be consumed be other applications.
 
 &#x20;  Click New and paste the path to your Python Scripts folder. 
 
-&#x20;  Restart Terminal:
+&#x20;  Restart Terminal.
+
+2\. install ffmpeg: 
+
+&#x20;  run command line with Admin
+
+&#x20;  choco install ffmpeg
+
+
+
+\------------------------------------------------Whisper local is tested. Mile Stone-----------------------------------------
 
