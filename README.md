@@ -54,7 +54,7 @@ Test:
 
     cd app
 
-    python -m uvicorn main:app --reload
+    python -m uvicorn main:app
 
  visit url: http://127.0.0.1:8000/docs#/default/upload_audio_file_upload_audo__post
 
