@@ -19,6 +19,16 @@ diarization_pipeline = Pipeline.from_pretrained(
     token=token
 )
 
+def format_time(seconds: float) -> str:
+    """Helper function to convert seconds to MM:SS or HH:MM:SS format."""
+    hours = int(seconds // 3600)
+    minutes = int((seconds % 3600) // 60)
+    secs = int(seconds % 60)
+    
+    if hours > 0:
+        return f"{hours:02d}:{minutes:02d}:{secs:02d}"
+    return f"{minutes:02d}:{secs:02d}"
+
 @app.post("/upload-audio/")
 async def upload_audio(file: UploadFile):
     temp_dir = tempfile.gettempdir()
@@ -55,7 +65,7 @@ async def upload_audio(file: UploadFile):
         if annotation is None:
             raise AttributeError("Failed to extract tracks from pyannote output.")
         
-        # --- Task 3: Align Text with Speakers ---
+        # --- Task 3: Align Text with Speakers & Format Time ---
         whisper_segments = transcription.get("segments", [])
         combined_conversation = []
         
@@ -75,8 +85,8 @@ async def upload_audio(file: UploadFile):
                     break
             
             combined_conversation.append({
-                "start": round(s_start, 2),
-                "end": round(s_end, 2),
+                "start": format_time(s_start),
+                "end": format_time(s_end),
                 "speaker": current_speaker,
                 "text": s_text
             })
