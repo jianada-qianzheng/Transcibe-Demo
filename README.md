@@ -53,7 +53,7 @@ Use simple API,reason: easy to be consumed be other applications.
 
 Test:
 
-    After download, and isntalled python on your computer, open this project on VS code, and run command line below to run the api:
+    Clone my repo from github and use main branch, and isntalled python on your computer, and run command line in the project folder and below to run the api:
 
     cd app
 
@@ -63,3 +63,17 @@ Test:
 
  visit url: http://127.0.0.1:8000/docs
 
+
+
+Test Optimization：
+
+
+    Clone my repo from github and use Optimization branch, and isntalled python on your computer, and run command line in the project folder and below to run the api:
+
+    cd app
+
+    $env:HF_TOKEN="[your huggingface_token]"
+
+    python -m uvicorn main:app
+
+ visit url: http://127.0.0.1:8000/docs
