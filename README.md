@@ -57,7 +57,7 @@ Test:
 
     cd app
 
-    set HF_TOKEN=[your huggingface_token]
+    $env:HF_TOKEN=[your huggingface_token]
 
     python -m uvicorn main:app
 
