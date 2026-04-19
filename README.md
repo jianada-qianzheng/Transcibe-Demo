@@ -44,6 +44,9 @@ Use simple API,reason: easy to be consumed be other applications.
 
 &#x20;  choco install ffmpeg
 
+3\. install pyannote.audio: 
+
+&#x20;  run command line: pip install pyannote.audio
 
 
 \------------------------------------------------Whisper local is tested. Mile Stone-----------------------------------------
@@ -53,6 +56,8 @@ Test:
     After download, and isntalled python on your computer, open this project on VS code, and run command line below to run the api:
 
     cd app
+
+    set HF_TOKEN=[your huggingface_token]
 
     python -m uvicorn main:app
 
